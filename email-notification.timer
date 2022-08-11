@@ -1,0 +1,6 @@
+[Unit]
+Description=check for any new emails
+
+[Timer]
+OnBootSec=0
+OnCalendar=*-*-* 08..20:00,10,20,30,40,50:00

@@ -1,0 +1,6 @@
+[Unit]
+Description=check for any new emails
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/EmailNotification/EmailNotification.py

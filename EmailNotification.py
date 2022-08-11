@@ -34,7 +34,7 @@ class EmailServerDetails:
             jsonDict['imapServer'], 
             jsonDict['port'])
 
-esd = EmailServerDetails.fromJson(json.loads(open("/home/idiot/dev/EmailNotification/BlueshellMail.json").read()))
+esd = EmailServerDetails.fromJson(json.loads(open("/home/idiot/EmailNotification/BlueshellMail.json").read()))
 
 def clean(text):
     return "".join(c if c.isalnum() else "_" for c in text)
@@ -68,7 +68,7 @@ for i in range(messages, messages - N, -1):
 
 def notify(subject, From):
     # opens a file as readonly to obtain the token.
-    token = open("/home/idiot/dev/HovelHelper/token.txt", "r").read()
+    token = open("/home/idiot/HovelHelper/token.txt", "r").read()
     
     # Stars the discord client
     client = discord.Client()
@@ -80,15 +80,15 @@ def notify(subject, From):
         # Sends a simple startup message.
         channel = client.get_guild(909496426390753280).get_channel(1007247309815435317)
         if(channel != None):
-            await channel.send(f"@everyone\n```"
-                + subject + "\n" + From + "```")
+            await channel.send(f"@everyone\n```\n"
+                    + From + ":\n" + subject + "```")
         
         await client.close()
             
     client.run(token)
 
 
-oldDate = open("/home/idiot/dev/EmailNotification/oldDate.txt", "r").read()
+oldDate = open("/home/idiot/EmailNotification/oldDate.txt", "r").read()
 if(oldDate != date):
     notify(subject, From)
-    open("/home/idiot/dev/EmailNotification/oldDate.txt", "w").write(date)
+    open("/home/idiot/EmailNotification/oldDate.txt", "w").write(date)
