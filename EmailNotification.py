@@ -64,7 +64,8 @@ for i in range(messages, messages - N, -1):
             if isinstance(date, bytes):
                 date = date.decode(encoding)
                 
-
+print("From: " + From)
+print("Subject: " + subject)
 
 def notify(subject, From):
     # opens a file as readonly to obtain the token.
